@@ -15,10 +15,10 @@ sheety_headers = {
 
 nutritionix_params = {
     "query": exercise_text,
-    "gender": GENDER,
-    "weight_kg": WEIGHT_KG,
-    "height_cm": HEIGHT_CM,
-    "age": AGE
+    "gender": gender,
+    "weight_kg": weight_kg,
+    "height_cm": height_cm,
+    "age": age
 }
 
 
@@ -46,14 +46,13 @@ def add_to_workout_track():
                 "duration": exercise["duration_min"],
                 "calories": exercise["nf_calories"],
             }
-
         }
 
-    sheet_response = requests.post(
-        url=sheety_endpoint, json=sheet_inputs, headers=sheety_headers)
+        sheet_response = requests.post(
+            url=sheety_endpoint, json=sheet_inputs, headers=sheety_headers)
 
-    print(sheet_response.text)
+        print(sheet_response.text)
 
 
-get_workout_track()
 add_to_workout_track()
+get_workout_track()
