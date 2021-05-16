@@ -5,12 +5,12 @@ from datetime import datetime as dt
 exercise_text = input("Tell me which exercises you did: ")
 
 headers = {
-    "x-app-id": NUTRITIONIX_APP_ID,
-    "x-app-key": NUTRITIONIX_API_KEY,
+    "x-app-id": nutrutionix_app_id,
+    "x-app-key": nutritionix_api_key,
 }
 
 sheety_headers = {
-    "Authorization": f"Bearer {SHEETY_BEARER_TOKEN}"
+    "Authorization": f"Bearer {sheety_bearer_token}"
 }
 
 nutritionix_params = {
@@ -22,7 +22,7 @@ nutritionix_params = {
 }
 
 
-response = requests.post(url=NUTRITIONIX_ENDPOINT,
+response = requests.post(url=nutritionix_endpoint,
                          json=nutritionix_params, headers=headers)
 result = response.json()
 print(result)
@@ -32,7 +32,7 @@ TIME = dt.now().strftime("%X")
 
 
 def get_workout_track():
-    response = requests.get(SHEETY_ENDPOINT, headers=sheety_headers)
+    response = requests.get(sheety_endpoint, headers=sheety_headers)
     print(response.json())
 
 
@@ -50,7 +50,7 @@ def add_to_workout_track():
         }
 
     sheet_response = requests.post(
-        url=SHEETY_ENDPOINT, json=sheet_inputs, headers=sheety_headers)
+        url=sheety_endpoint, json=sheet_inputs, headers=sheety_headers)
 
     print(sheet_response.text)
 
